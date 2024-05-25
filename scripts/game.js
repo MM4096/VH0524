@@ -173,7 +173,7 @@ function update_item_with_values(part_type, name) {
         console.error("Could not find image path for " + name)
         return
     }
-    image_path = get_path_of_file("../images/" + image_path)
+    image_path = get_path_of_file("images/" + image_path)
 
     switch (part_type) {
         case "body":
