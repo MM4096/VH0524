@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylesheets/calibration.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="image">
+            <div id="body-image">
+                <div id="eye-image"></div>
+                <div id="mouth-image"></div>
+            </div>
+        </div>
+
+        <div class="selection">
+            <div class="option">
+                <h1>Body</h1>
+                <input type="file" accept="image/png" id="body_file" value="select a body" onchange="set_background_image(this, '#body-image')">
+                <div>
+                    <label for="body_size_x">Body size</label>
+                    <input type="range" min="10" max="500" id="body_size_x" placeholder="x" oninput="update_body_size()">
+                    <input type="range" min="10" max="500" id="body_size_y" placeholder="y" oninput="update_body_size()">
+                </div>
+            </div>
+            <div class="option">
+                <h1>Eyes</h1>
+                <input type="file" accept="image/png" id="eye_file" onchange="set_background_image(this, '#eye-image')">
+                <label for="eye_size">Eye Size</label><input type="range" min="1" max="200" id="eye_size" oninput="update_eye_size()">
+                <br>
+                <label for="eye_y">Eye Position</label><input type="range" min="0" max="1000" id="eye_y" oninput="eye_y_pos()">
+            </div>
+            <div class="option">
+                <h1>Mouth</h1>
+                <input type="file" accept="image/png" id="mouth_file" onchange="set_background_image(this, '#mouth-image')">
+                <label for="mouth_size">Mouth Size</label><input type="range" min="1" max="200" id="mouth_size" oninput="update_mouth_size()">
+                <br>
+                <label for="mouth_y">Mouth Position</label><input type="range" min="0" max="1000" id="mouth_y" oninput="mouth_y_pos()">
+            </div>
+            <div class="option">
+                <label>
+                    <textarea id="output">Placeholder</textarea>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/vector2.js"></script>
+    <script src="script.js"></script>
+    <script src="scripts/calibration.js"></script>
+</body>
+</html>

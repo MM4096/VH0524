@@ -1,0 +1,18 @@
+#eye-size {
+    background-color: lime;
+    height: 70px;
+    left: calc(50% - 60px);
+    top: calc(50% - 35px);
+    width: 120px;
+    position: absolute;
+}
+
+#eye-image {
+    background-image: url("../images/eye_1.png");
+    background-size: 90%;
+    background-color: transparent;
+    height: 100px;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+    width: 100px;
+}

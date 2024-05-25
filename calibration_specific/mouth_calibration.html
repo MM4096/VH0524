@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../stylesheets/calibration.css">
+    <link rel="stylesheet" href="../stylesheets/mouth_calibration.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="main-container">
+    <div class="image">
+        <div id="eye-size">
+            <div id="eye-image"></div>
+        </div>
+    </div>
+    <div class="selection">
+        <h1>Mouth Calibration</h1>
+        <br>
+        <label for="eye-input">Select a mouth image (PNG type only): </label>
+        <input id="eye-input" type="file" accept="image/png" onchange="update_eye_image(this, '#eye-image')">
+        <br>
+        <label for="eye-size-input">Mouth Scale: </label><input type="range" min="0.05" max="2" step="0.05" id="eye-size-input" oninput="update_eye_size()">
+        <input type="number" id="eye-size-output" style="width: 50px;" oninput="set_eye_size_value()" step="0.05" min="0.05" max="2" value="1">
+        <br>
+        <label for="eye-pos-input">Mouth Position: </label><input type="range" min="-200" max="200" step="1" id="eye-pos-input" oninput="update_eye_pos()">
+        <input type="number" id="eye-pos-output" style="width: 50px;" oninput="set_eye_pos_value()" step="1" min="-200" max="200" value="1">
+        <br>
+        <textarea id="output" rows="10" cols="50"></textarea>
+    </div>
+</div>
+
+<script src="../script.js"></script>
+<script src="../scripts/vector2.js"></script>
+<script src="../scripts/calibration.js"></script>
+<script src="../scripts/eye_calibration.js"></script>
+</body>
+</html>

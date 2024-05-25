@@ -1,0 +1,60 @@
+#body-image {
+    border: 2px solid #000000
+}
+
+#output {
+    resize: none;
+}
+
+.option {
+    height: 23%;
+    width: 100%;
+    background-color: #00ff00;
+    margin-bottom: 1px;
+    display: block;
+}
+
+#body-size {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: orange;
+    z-index: 0;
+}
+
+#eye-image {
+    position: absolute;
+    background-image: none;
+    background-color: lime;
+    height: 70px;
+    left: calc(50% - 60px);
+    width: 120px;
+}
+
+#mouth-image {
+    background-image: none;
+    background-color: blueviolet;
+    height: 60px;
+    left: calc(50% - 70px);
+    width: 140px;
+    top: 160px;
+}
+
+#body-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1;
+}
+
+.image {
+    position: relative;
+}

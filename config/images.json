@@ -1,0 +1,44 @@
+{
+  "bodies": [
+    {
+      "name": "body_1_front",
+      "path": "body_1_split/body_1_front.png"
+    },
+    {
+      "name": "body_2_front",
+      "path": "body_2_split/body_2_front.png"
+    },
+    {
+      "name": "body_3_front",
+      "path": "body_3_split/body_3_front.png"
+    }
+  ],
+  "eyes": [
+    {
+      "name": "eye_1",
+      "path": "eye_1.png"
+    },
+    {
+      "name": "eye_2",
+      "path": "eye_2.png"
+    },
+    {
+      "name": "eye_3",
+      "path": "eye_3.png"
+    }
+  ],
+  "mouths": [
+    {
+      "name": "mouth_1",
+      "path": "mouth_1.png"
+    },
+    {
+      "name": "mouth_2",
+      "path": "mouth_2.png"
+    },
+    {
+      "name": "mouth_3",
+      "path": "mouth_3.png"
+    }
+  ]
+}
