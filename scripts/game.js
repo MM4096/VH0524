@@ -16,27 +16,42 @@ let default_eye_and_mouth_configuration = {
 
 $(document).ready(function() {
     update_loading_screen("Hanging out with friends...", 0)
-    fetch("../config/images.json")
+    fetch(get_path_of_file("config/images.json"))
         .then(response => response.json())
         .then(data => {
             images = data
             update_images()
         })
     update_loading_screen("Doing some homework...", 10)
-    fetch("../config/config.json")
+    fetch(get_path_of_file("config/config.json"))
         .then(response => response.json())
         .then(data => {
             config = data
             update_config()
         })
     update_loading_screen("Getting ready for the party...", 40)
-    fetch("../config/parts.json")
+    fetch(get_path_of_file("config/parts.json"))
         .then(response => response.json())
         .then(data => {
             parts = data
             update_parts()
         })
 })
+
+function get_path_of_file(path) {
+    switch(window.location.protocol) {
+        case 'http:':
+        case 'https:':
+            return path
+            break;
+        case 'file:':
+        case 'localhost':
+            return "../" + path
+            break;
+        default:
+        //some other protocol
+    }
+}
 
 let images_ready = false
 function update_images() {
