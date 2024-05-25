@@ -1,3 +1,5 @@
+const https_url = "https://mm4096.github.io/VH0524/"
+
 let parts
 let images
 let config
@@ -57,7 +59,7 @@ function get_path_of_file(path) {
     switch(window.location.protocol) {
         case 'http:':
         case 'https:':
-            return path
+            return https_url + path
             break;
         case 'file:':
         case 'localhost':
@@ -121,6 +123,14 @@ function close_opacity() {
     }, 500)
 }
 
+function show_opacity() {
+    $(".overlay").show()
+    setTimeout(() => {
+        $(".overlay").css("opacity", 1)
+    }, 10)
+
+}
+
 function update_loading_screen(text, bar_percentage, bar_color = "default") {
     $("#loading-text").text(text)
     if (bar_percentage !== undefined) {
@@ -173,7 +183,16 @@ function update_item_with_values(part_type, name) {
         console.error("Could not find image path for " + name)
         return
     }
-    image_path = get_path_of_file("images/" + image_path)
+    try {
+        image_path = get_path_of_file("images/" + image_path)
+    }
+    catch (error) {
+        console.error("Could not find image path for " + name)
+        show_opacity()
+        $("#loading-header").text("Oh no!")
+        update_loading_screen("An error occurred!", 100, "red")
+        return
+    }
 
     switch (part_type) {
         case "body":
