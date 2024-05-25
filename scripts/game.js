@@ -22,6 +22,11 @@ $(document).ready(function() {
             images = data
             update_images()
         })
+        .catch(error => {
+            $("#loading-header").text("Oh no!")
+            update_loading_screen("An error occurred!", 100, "red")
+            console.error(error)
+        })
     update_loading_screen("Doing some homework...", 10)
     fetch(get_path_of_file("config/config.json"))
         .then(response => response.json())
@@ -29,12 +34,22 @@ $(document).ready(function() {
             config = data
             update_config()
         })
+        .catch(error => {
+            $("#loading-header").text("Oh no!")
+            update_loading_screen("An error occurred!", 100, "red")
+            console.error(error)
+        })
     update_loading_screen("Getting ready for the party...", 40)
     fetch(get_path_of_file("config/parts.json"))
         .then(response => response.json())
         .then(data => {
             parts = data
             update_parts()
+        })
+        .catch(error => {
+            $("#loading-header").text("Oh no!")
+            update_loading_screen("An error occurred!", 100, "red")
+            console.error(error)
         })
 })
 
@@ -106,10 +121,13 @@ function close_opacity() {
     }, 500)
 }
 
-function update_loading_screen(text, bar_percentage) {
+function update_loading_screen(text, bar_percentage, bar_color = "default") {
     $("#loading-text").text(text)
     if (bar_percentage !== undefined) {
         $("#progress").css("width", `${bar_percentage}%`)
+    }
+    if (bar_color !== "default") {
+        $("#progress").css("background-color", bar_color)
     }
 }
 
@@ -155,7 +173,7 @@ function update_item_with_values(part_type, name) {
         console.error("Could not find image path for " + name)
         return
     }
-    image_path = "../images/" + image_path
+    image_path = get_path_of_file("../images/" + image_path)
 
     switch (part_type) {
         case "body":
