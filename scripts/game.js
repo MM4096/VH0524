@@ -60,13 +60,11 @@ function get_path_of_file(path) {
         case 'http:':
         case 'https:':
             return https_url + path
-            break;
         case 'file:':
         case 'localhost':
             return "../" + path
-            break;
         default:
-        //some other protocol
+            return "../" + path
     }
 }
 
@@ -151,7 +149,7 @@ function create_option(part_type, name, image_path) {
     let tag = `
             <div class="grid-item">
                 <button onclick="update_item(this)" data-part-type="${part_type}" data-name="${name}" class="option-button">
-                    <img src="../images/${image_path}" alt="${name}" class="option-image" draggable="false">
+                    <img src="${get_path_of_file("images/" + image_path)}" alt="${name}" class="option-image" draggable="false">
                 </button>
             </div>
         `
@@ -187,11 +185,6 @@ function update_item_with_values(part_type, name) {
         image_path = get_path_of_file("images/" + image_path)
     }
     catch (error) {
-        console.error("Could not find image path for " + name)
-        show_opacity()
-        $("#loading-header").text("Oh no!")
-        update_loading_screen("An error occurred!", 100, "red")
-        return
     }
 
     switch (part_type) {
