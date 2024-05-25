@@ -59,14 +59,14 @@ function get_path_of_file(path) {
     switch(window.location.protocol) {
         case 'http:':
         case 'https:':
+            console.log('https')
             return https_url + path
-            break;
         case 'file:':
         case 'localhost':
+            console.log('local')
             return "../" + path
-            break;
         default:
-        //some other protocol
+            return "../" + path
     }
 }
 
@@ -187,11 +187,6 @@ function update_item_with_values(part_type, name) {
         image_path = get_path_of_file("images/" + image_path)
     }
     catch (error) {
-        console.error("Could not find image path for " + name)
-        show_opacity()
-        $("#loading-header").text("Oh no!")
-        update_loading_screen("An error occurred!", 100, "red")
-        return
     }
 
     switch (part_type) {
