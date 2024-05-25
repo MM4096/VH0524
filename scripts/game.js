@@ -59,11 +59,9 @@ function get_path_of_file(path) {
     switch(window.location.protocol) {
         case 'http:':
         case 'https:':
-            console.log('https')
             return https_url + path
         case 'file:':
         case 'localhost':
-            console.log('local')
             return "../" + path
         default:
             return "../" + path
@@ -151,7 +149,7 @@ function create_option(part_type, name, image_path) {
     let tag = `
             <div class="grid-item">
                 <button onclick="update_item(this)" data-part-type="${part_type}" data-name="${name}" class="option-button">
-                    <img src="../images/${image_path}" alt="${name}" class="option-image" draggable="false">
+                    <img src="${get_path_of_file("images/" + image_path)}" alt="${name}" class="option-image" draggable="false">
                 </button>
             </div>
         `
