@@ -40,5 +40,19 @@
       "name": "mouth_3",
       "path": "mouth_3.png"
     }
+  ],
+  "backgrounds": [
+    {
+      "name": "background_1",
+      "path": "background/placeholder.jpg"
+    },
+    {
+      "name": "background_2",
+      "path": "background/placeholder-2.jpg"
+    },
+    {
+      "name": "background_3",
+      "path": "background/placeholder-3.jpg"
+    }
   ]
 }
