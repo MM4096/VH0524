@@ -104,6 +104,12 @@ function update_parts() {
         let name = this_object.name
         create_option("eyes", name, path)
     }
+    for (let e in images.backgrounds) {
+        let this_object = images.backgrounds[e]
+        let path = this_object.path
+        let name = this_object.name
+        create_option("background", name, path)
+    }
     update_item_with_values("body", config.initial_parts.body)
     update_item_with_values("mouth", config.initial_parts.mouth)
     update_item_with_values("eyes", config.initial_parts.eyes)
@@ -145,10 +151,10 @@ function late_update() {
     $("#body-image").show()
 }
 
-function create_option(part_type, name, image_path) {
+function create_option(option_type, name, image_path) {
     let tag = `
             <div class="grid-item">
-                <button onclick="update_item(this)" data-part-type="${part_type}" data-name="${name}" class="option-button">
+                <button onclick="update_item(this)" data-option-type="${option_type}" data-name="${name}" class="option-button">
                     <img src="${get_path_of_file("images/" + image_path)}" alt="${name}" class="option-image" draggable="false">
                 </button>
             </div>
@@ -159,12 +165,12 @@ function create_option(part_type, name, image_path) {
 
 function update_item(sender) {
     let sender_obj = $(sender)
-    let part_type = sender_obj.data("part-type")
+    let part_type = sender_obj.data("option-type")
     let name = sender_obj.data("name")
     update_item_with_values(part_type, name)
 }
 
-function update_item_with_values(part_type, name) {
+function update_item_with_values(object_type, name) {
     let body = $("#body-image")
     let image_path = ""
     for (let i in images) {
@@ -187,7 +193,7 @@ function update_item_with_values(part_type, name) {
     catch (error) {
     }
 
-    switch (part_type) {
+    switch (object_type) {
         case "body":
             body.css("background-image", `url(${image_path})`)
             let config = ""
@@ -234,6 +240,11 @@ function update_item_with_values(part_type, name) {
                 "background-image": `url(${image_path})`,
             })
             update_eye_css()
+            break
+        case "background":
+            $("#background-image").css({
+                "background-image": `url(${image_path})`,
+            })
             break
     }
 }
