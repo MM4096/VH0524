@@ -191,6 +191,7 @@ function update_item_with_values(object_type, name) {
         image_path = get_path_of_file("images/" + image_path)
     }
     catch (error) {
+        console.error("Could not find image path for " + name)
     }
 
     switch (object_type) {
@@ -242,7 +243,7 @@ function update_item_with_values(object_type, name) {
             update_eye_css()
             break
         case "background":
-            $("#background-image").css({
+            $(".background-image").css({
                 "background-image": `url(${image_path})`,
             })
             break

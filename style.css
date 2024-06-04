@@ -15,10 +15,6 @@
     /*background-color: #ff0000;*/
 }
 
-.selection {
-    backdrop-filter: blur(10px);
-}
-
 .background-image {
     background-image: url('images/background/placeholder.jpg');
     background-size: cover;
@@ -28,6 +24,8 @@
     width: 99%;
     height: 98%;
     z-index: -1;
+    -webkit-transition: background-image 0.2s ease-in-out;
+    transition: background-image 0.2s ease-in-out;
 }
 
 #body-image {
